@@ -57,25 +57,37 @@ const searchInput = {
 
 const stores = [
   {
-    name: 'London Drugs',
+    name: 'Topshop',
   },
   {
-    name: 'Safeway',
+    name: 'American Eagle',
   },
   {
-    name: 'Shoppers Drug Mart',
+    name: 'Frank and Oak',
   },
   {
-    name: 'Marketplace IGA',
+    name: 'Tna',
   },
   {
-    name: 'Costco',
+    name: 'Gap',
   },
   {
-    name: 'Urban Fare',
+    name: 'GUESS',
   },
   {
-    name: 'Rexall',
+    name: 'Plenty',
+  },
+  {
+    name: 'Roots',
+  },
+  {
+    name: 'Uniqlo',
+  },
+  {
+    name: 'Tommy Hilfiger',
+  },
+  {
+    name: 'Old Navy',
   }
 ];
 

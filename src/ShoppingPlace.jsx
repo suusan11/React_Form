@@ -42,7 +42,7 @@ const ShoppingPlace = props => {
   </svg>
 
 
-  const options = ['Walmart', 'Whole Foods', 'Save On Foods', 'Superstore', 'Independent Local Grocer', 'Independent Health Stores'];
+  const options = ['Aritzia', 'Urban Outfitters', 'Banana Republic', 'H&M', 'Oak + Fort', 'Zara'];
 
   const [value, setValue] = useState(options);
 

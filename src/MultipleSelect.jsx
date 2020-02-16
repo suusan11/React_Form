@@ -61,7 +61,6 @@ const outerBox = {
   height: '72px',
   border: '1px solid #CCCCCC',
   borderRadius: '4px',
-  boxShadow: 'inset 0px 0px 10px rgba(0, 0, 0, 0.1)',
   marginBottom: '8px',
 }
 const errorBox = {
@@ -70,7 +69,6 @@ const errorBox = {
   height: '72px',
   border: '1px solid #E42748',
   borderRadius: '4px',
-  boxShadow: 'inset 0px 0px 10px rgba(228, 39, 72, 0.1)',
   marginBottom: '8px',
 }
 const errorMessage = {
@@ -121,11 +119,11 @@ const MultipleSelect = props => {
             let border;
             let textColor;
             if (!multipleValueArr.includes(option)) {
-              background = '#FBFBFB';
+              background = '#FFFFFF';
               border = '1px solid #CCCCCC';
               textColor = '#5D5D5D';
             } else {
-              background = '#08ADCD';
+              background = '#222222';
               border = 'none';
               textColor = '#FFFFFF';
             }

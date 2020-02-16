@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Grommet, Heading, Paragraph, Anchor, Box, Text, Form, Image } from 'grommet';
-import iconFashion from './assets/mannequin.png';
+import iconCheck from './assets/tick.png';
 
 //components
 import SendButton from './SendButton';
@@ -210,13 +210,10 @@ const App = () => {
 
   return (
     <Grommet theme={MainTheme}>
-      <Box height='70px' width='70px' pad={{ top: '96px' }} align='center' alignSelf='center'>
-        <Image src={iconFashion} alignSelf='center' />
-      </Box>
       <Box
         width='590px'
+        pad={{ top: '50px' }}
         margin={{
-          top: '16px',
           left: 'auto',
           right: 'auto',
         }}
@@ -230,20 +227,27 @@ const App = () => {
           }}
           textAlign='center'
         >
-          Tell us a bit about yourself!
-      </Heading>
-        <Paragraph
-          size='small'
-          margin={{
-            top: '8px',
-          }}
-          textAlign='center'
-          fill
-        >
-          Hesitant to share? Don’t be! We only use this info to match you to the right products.
-      We will never, ever share it without your permission or even think about selling it.
-    Read our <Anchor href='#' label='Privacy Policy' color='#08ADCD' />  to learn more.
-      </Paragraph>
+          What you will get?
+        </Heading>
+        <Box pad={{ left: '25%' }}>
+          <Paragraph size='small' margin={{ top: '8px', }}>
+            <Image fit='contain' src={iconCheck} margin={{ right: '10px' }} style={{ verticalAlign: 'middle' }} />
+            Birthday offer
+          </Paragraph>
+          <Paragraph size='small' margin={{ top: '8px', }}>
+            <Image fit='contain' src={iconCheck} margin={{ right: '10px' }} style={{ verticalAlign: 'middle' }} />
+            Get best suggestions you want
+          </Paragraph>
+          <Paragraph size='small' margin={{ top: '8px', }}>
+            <Image fit='contain' src={iconCheck} margin={{ right: '10px' }} style={{ verticalAlign: 'middle' }} />
+            Hear what people are interested in
+          </Paragraph>
+          <Paragraph size='small' margin={{ top: '8px', }}>
+            <Image fit='contain' src={iconCheck} margin={{ right: '10px' }} style={{ verticalAlign: 'middle' }} />
+            Share the information
+          </Paragraph>
+        </Box>
+
         <Form onSubmit={handleSubmit}>
           {Object.values(required).includes(false) ? <Text style={errorText}>Please check your answers and try again.</Text> : ''}
           <Birthday
@@ -293,19 +297,9 @@ const App = () => {
             />
           </Box>
           {isBabyDueShow && <BabyDue display={babyDueStyles} change={handleBirthdayChange} month={value.expectMonth} year={value.expectYear} />}
-          <SingleSelect
-            heading='My experience with natural/organic products is:*'
-            options={['I never buy them', 'I don’t normally buy them', 'I only buy them on sale', 'I buy them whenever I can', 'I only shop natural/organic']}
-            width='192px'
-            padding={{ 'right': '24px', 'left': '24px' }}
-            name='experience'
-            value={value.experience}
-            change={handleSingleChange}
-            required={required.experience}
-          />
           <MultipleSelect
             heading='What is important in choosing clothes? *'
-            options={['Organic', 'GMO-free', 'All-Natural', 'Cruelty-Free', 'Dairy-Free', 'Lactose-Free', 'Nut-Free', 'Peanut-Free', 'Allergy-Friendly', 'Kosher', 'Ethically Sourced (Fair Trade)', 'Fragrance-Free', 'Holistic Remedies', 'Locally Made', 'Celiac-Friendly', 'Paleo', 'Sugar-Free']}
+            options={['Color', 'Pattern', 'Price', 'Brand', 'Material', 'Shape', 'Trend', 'Comfort', 'Texture', 'Easy to clean', 'Combination with my clothes', 'Others']}
             name='qualities'
             value={value.qualities}
             change={handleMultiChange}
@@ -314,7 +308,7 @@ const App = () => {
           <MultipleSelect
             heading='What is info source of your fashion? *'
             anchor={<Anchor href='#' icon={iconQuestion} />}
-            options={['Any animal products', 'Meat or Poultry', 'Seafood', 'Dairy products', 'Gluten containing products', 'Wheat containing products', 'Nut containing products', 'Soy containing products']}
+            options={['Instagram', 'Twitter', 'Website', 'Youtube', 'Shop', 'Magazine', 'TV Program', 'Friends', 'Family']}
             name='exceptItems'
             value={value.exceptItems}
             change={handleMultiChange}

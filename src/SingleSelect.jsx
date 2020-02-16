@@ -39,14 +39,12 @@ const outerBox = {
   height: '72px',
   border: '1px solid #CCCCCC',
   borderRadius: '4px',
-  boxShadow: 'inset 0px 0px 10px rgba(0, 0, 0, 0.1)',
 }
 const errorBox = {
   position: 'relative',
   height: '72px',
   border: '1px solid #E42748',
   borderRadius: '4px',
-  boxShadow: 'inset 0px 0px 10px rgba(228, 39, 72, 0.1)',
 }
 const removeBoxStyle = {
   border: 'none',
@@ -95,11 +93,11 @@ const SingleSelect = props => {
             let textColor;
 
             if (checked) {
-              background = '#08ADCD';
+              background = '#222222';
               textColor = '#FFFFFF';
             }
             else {
-              background = '#FBFBFB';
+              background = '#FFFFFF';
               textColor = '#5D5D5D';
             }
             return (

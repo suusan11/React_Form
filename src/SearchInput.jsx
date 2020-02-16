@@ -48,10 +48,10 @@ const SearchInputTheme = {
 //specific style
 const searchInput = {
   position: 'relative',
-  width: '590px',
+  width: '585px',
   height: '40px',
   background: '#FFFFFF',
-  border: '1px solid #08ADCD',
+  border: '1px solid #CCCCCC',
   borderRadius: '4px',
 }
 

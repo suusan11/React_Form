@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 const SubmitButton = styled.button.attrs(props => ({
-  background: props.color || 'linear-gradient(346.52deg, #D1239D 0%, #E42748 100%)'
+  background: props.color || '#B783FC'
 }))
   `
   display: block;

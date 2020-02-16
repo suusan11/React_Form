@@ -11,7 +11,7 @@ const BirthdayInputTheme = {
     extend: () => {
       return `
       height: 40px;
-      background: #FBFBFB;
+      background: #FFFFFF;
       border: 1px solid #CCCCCC;
       border-radius: 4px;
       margin-right: 9px;

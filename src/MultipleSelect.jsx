@@ -1,6 +1,53 @@
 import React from 'react';
-import { Heading, Text, CheckBox, Box, Image } from 'grommet';
+import { Heading, Text, CheckBox, Box, Image, Grommet } from 'grommet';
 import iconChecked from './assets/checked.png';
+
+const CheckButtontheme = {
+  text: {
+    medium: {
+      size: '16px',
+      height: '20px',
+    }
+  },
+  checkBox: {
+    extend: () => {
+      return `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 192px;
+        height: 72px;
+      `
+    },
+    hover: {
+      border: {
+        color: 'transparent',
+      }
+    },
+    check: {
+      extend: () => {
+        return `
+          display: none;
+        `
+      }
+    },
+    icon: {
+      size: '0px'
+    },
+  },
+  image: {
+    extend: () => {
+      return `
+        position: absolute;
+        top: 4px;
+        right: 3.5px;
+        width: 10px;
+        height: 8px;
+        z-index: 5;
+      `
+    }
+  }
+};
 
 //specific styles
 const boxContainer = {
@@ -11,6 +58,7 @@ const boxContainer = {
 const outerBox = {
   position: 'relative',
   width: '192px',
+  height: '72px',
   border: '1px solid #CCCCCC',
   borderRadius: '4px',
   boxShadow: 'inset 0px 0px 10px rgba(0, 0, 0, 0.1)',
@@ -19,6 +67,7 @@ const outerBox = {
 const errorBox = {
   position: 'relative',
   width: '192px',
+  height: '72px',
   border: '1px solid #E42748',
   borderRadius: '4px',
   boxShadow: 'inset 0px 0px 10px rgba(228, 39, 72, 0.1)',
@@ -63,39 +112,41 @@ const MultipleSelect = props => {
       </Heading>
       <Text size='14px' margin={{ bottom: '8px' }}>Select all that apply. </Text>
       {props.required === false ? <Text style={errorMessage}>{errorIcon}&ensp;Answer required</Text> : ''}
-      <Box direction='row' justify='start' alignContent='end' wrap={true} margin={{ top: '8px' }} style={boxContainer}>
+      <Grommet theme={CheckButtontheme}>
+        <Box direction='row' justify='start' alignContent='end' wrap={true} margin={{ top: '8px' }} style={boxContainer}>
 
-        {props.options.map(option => {
-          const multipleValueArr = props.value; //props.value = array of multipleSelect ex) qualities: []
-          let background;
-          let border;
-          let textColor;
-          if (!multipleValueArr.includes(option)) {
-            background = '#FBFBFB';
-            border = '1px solid #CCCCCC';
-            textColor = '#5D5D5D';
-          } else {
-            background = '#08ADCD';
-            border = 'none';
-            textColor = '#FFFFFF';
+          {props.options.map(option => {
+            const multipleValueArr = props.value; //props.value = array of multipleSelect ex) qualities: []
+            let background;
+            let border;
+            let textColor;
+            if (!multipleValueArr.includes(option)) {
+              background = '#FBFBFB';
+              border = '1px solid #CCCCCC';
+              textColor = '#5D5D5D';
+            } else {
+              background = '#08ADCD';
+              border = 'none';
+              textColor = '#FFFFFF';
+            }
+            return (
+              <Box key={option} style={props.required === false ? errorBox : outerBox} background={background} border={{ border }} margin={{ right: '4px' }} pad={{ right: '24px', left: '24px' }}>
+                <Image src={iconChecked} alignSelf='end' />
+                <Text alignSelf='center' textAlign='center' margin={{ 'vertical': 'auto' }} color={textColor}>{option}</Text>
+                <CheckBox
+                  name={props.name}
+                  key={option}
+                  value={option}
+                  checked={multipleValueArr.includes(option)}
+                  onChange={onCheckboxChange(option)}
+                  onClick={props.click}
+                />
+              </Box>
+            );
+          })
           }
-          return (
-            <Box key={option} style={props.required === false ? errorBox : outerBox} background={background} border={{ border }} height={props.height} margin={{ right: '4px' }} pad={{ right: '24px', left: '24px' }}>
-              <Image src={iconChecked} alignSelf='end' />
-              <Text alignSelf='center' textAlign='center' margin={{ 'vertical': 'auto' }} color={textColor}>{option}</Text>
-              <CheckBox
-                name={props.name}
-                key={option}
-                value={option}
-                checked={multipleValueArr.includes(option)}
-                onChange={onCheckboxChange(option)}
-                onClick={props.click}
-              />
-            </Box>
-          );
-        })
-        }
-      </Box>
+        </Box>
+      </Grommet>
     </>
   );
 

@@ -20,8 +20,8 @@ const MainTheme = {
       height: '20px',
     },
     colors: {
-      background: '#E5E5E5',
-    },
+      background: '#FAFAFA',
+    }
   },
   paragraph: {
     'small': {
@@ -92,52 +92,7 @@ const SmallMultiButtontheme = {
     }
   }
 };
-const BigMultiButtontheme = {
-  text: {
-    medium: {
-      size: '16px',
-      height: '20px',
-    }
-  },
-  checkBox: {
-    extend: () => {
-      return `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 192px;
-        height: 72px;
-      `
-    },
-    hover: {
-      border: {
-        color: 'transparent',
-      }
-    },
-    check: {
-      extend: () => {
-        return `
-          display: none;
-        `
-      }
-    },
-    icon: {
-      size: '0px'
-    },
-  },
-  image: {
-    extend: () => {
-      return `
-        position: absolute;
-        top: 4px;
-        right: 3.5px;
-        width: 10px;
-        height: 8px;
-        z-index: 5;
-      `
-    }
-  }
-};
+
 
 const App = () => {
   const iconQuestion = <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -315,7 +270,6 @@ const App = () => {
               heading='Who do you normally shop for?*'
               anchor={<Anchor href='#' icon={iconQuestion} />}
               options={['Myself', 'My Children', 'My Family', 'My Partner', 'My Pet']}
-              height='56px'
               click={showChildBirthInput}
               name='shopFor'
               value={value.shopFor}
@@ -349,37 +303,29 @@ const App = () => {
             change={handleSingleChange}
             required={required.experience}
           />
-          <Grommet theme={BigMultiButtontheme}>
-            <MultipleSelect
-              heading='What is important in choosing clothes? *'
-              options={['Organic', 'GMO-free', 'All-Natural', 'Cruelty-Free', 'Dairy-Free', 'Lactose-Free', 'Nut-Free', 'Peanut-Free', 'Allergy-Friendly', 'Kosher', 'Ethically Sourced (Fair Trade)', 'Fragrance-Free', 'Holistic Remedies', 'Locally Made', 'Celiac-Friendly', 'Paleo', 'Sugar-Free']}
-              height='72px'
-              name='qualities'
-              value={value.qualities}
-              change={handleMultiChange}
-              required={required.qualities}
-            />
-          </Grommet>
-          <Grommet theme={BigMultiButtontheme}>
-            <MultipleSelect
-              heading='What is info source of your fashion? *'
-              anchor={<Anchor href='#' icon={iconQuestion} />}
-              options={['Any animal products', 'Meat or Poultry', 'Seafood', 'Dairy products', 'Gluten containing products', 'Wheat containing products', 'Nut containing products', 'Soy containing products']}
-              height='72px'
-              name='exceptItems'
-              value={value.exceptItems}
-              change={handleMultiChange}
-              required={required.exceptItems}
-            />
-          </Grommet>
-          <Grommet theme={BigMultiButtontheme}>
-            <ShoppingPlace
-              name='stores'
-              value={value.stores}
-              change={handleMultiChange}
-              required={required.stores}
-            />
-          </Grommet>
+          <MultipleSelect
+            heading='What is important in choosing clothes? *'
+            options={['Organic', 'GMO-free', 'All-Natural', 'Cruelty-Free', 'Dairy-Free', 'Lactose-Free', 'Nut-Free', 'Peanut-Free', 'Allergy-Friendly', 'Kosher', 'Ethically Sourced (Fair Trade)', 'Fragrance-Free', 'Holistic Remedies', 'Locally Made', 'Celiac-Friendly', 'Paleo', 'Sugar-Free']}
+            name='qualities'
+            value={value.qualities}
+            change={handleMultiChange}
+            required={required.qualities}
+          />
+          <MultipleSelect
+            heading='What is info source of your fashion? *'
+            anchor={<Anchor href='#' icon={iconQuestion} />}
+            options={['Any animal products', 'Meat or Poultry', 'Seafood', 'Dairy products', 'Gluten containing products', 'Wheat containing products', 'Nut containing products', 'Soy containing products']}
+            name='exceptItems'
+            value={value.exceptItems}
+            change={handleMultiChange}
+            required={required.exceptItems}
+          />
+          <ShoppingPlace
+            name='stores'
+            value={value.stores}
+            change={handleMultiChange}
+            required={required.stores}
+          />
           <SendButton type='submit' label='submit' />
           {/* <SendSendButton label='submit' color='#5C73F2' /> color change */}
         </Form>

@@ -114,7 +114,7 @@ const MultipleSelect = props => {
         <Box direction='row' justify='start' alignContent='end' wrap={true} margin={{ top: '8px' }} style={boxContainer}>
 
           {props.options.map(option => {
-            const multipleValueArr = props.value; //props.value = array of multipleSelect ex) qualities: []
+            const multipleValueArr = props.value; //props.value = array of multipleSelect ex) importance: []
             let background;
             let border;
             let textColor;

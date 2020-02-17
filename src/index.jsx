@@ -8,7 +8,7 @@ import SendButton from './SendButton';
 import SingleSelect from './SingleSelect';
 import MultipleSelect from './MultipleSelect';
 import Birthday from './Birthday';
-import ChildBirth from './ChildBirth';
+import ExtraInput from './ExtraInput';
 import BabyDue from './BabyDue';
 import ShoppingPlace from './ShoppingPlace';
 
@@ -46,53 +46,6 @@ const errorText = {
   backgroundColor: '#E42748',
   paddingLeft: '20px',
 };
-const SmallMultiButtontheme = {
-  text: {
-    medium: {
-      size: '16px',
-      height: '20px',
-    }
-  },
-  checkBox: {
-    extend: () => {
-      return `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 192px;
-        height: 56px;
-      `
-    },
-    hover: {
-      border: {
-        color: 'transparent',
-      }
-    },
-    check: {
-      extend: () => {
-        return `
-          display: none;
-        `
-      }
-    },
-    icon: {
-      size: '0px'
-    },
-  },
-  image: {
-    extend: () => {
-      return `
-        position: absolute;
-        top: 4px;
-        right: 3.5px;
-        width: 10px;
-        height: 8px;
-        z-index: 5;
-      `
-    }
-  }
-};
-
 
 const App = () => {
   const iconQuestion = <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,13 +58,12 @@ const App = () => {
     day: '',
     year: '',
     shopFor: [],
-    childBirthYear: [''], // ['2001', '2005', '2006', '']
     expectBaby: '',
     expectMonth: '',
     expectYear: '',
-    experience: '',
-    qualities: [],
-    exceptItems: [],
+    importance: [],
+    others: [''], // ['abc', 'def', 'ghi', '']
+    source: [],
     stores: [],
   })
   const [required, setRequired] = useState({
@@ -121,9 +73,8 @@ const App = () => {
     year: '',
     shopFor: '',
     expectBaby: '',
-    experience: '',
-    qualities: '',
-    exceptItems: '',
+    importance: '',
+    source: '',
     stores: '',
   });
 
@@ -151,30 +102,32 @@ const App = () => {
     }
   }
 
-  //onChange to input childBirth
+  //onChange to input others
   const handleChildBirthChange = index => ({ target }) => { //this onChange event relate with each index which child component has
-    const { childBirthYear } = value; //const childBirthYear = value.childBirthYear;
-    if (target.value === '' || (target.value[0] >= 1 && target.value[0] <= 2)) {
-      const newchildBirthYear = [...childBirthYear];
-      newchildBirthYear[index] = target.value;
-      setValue({ ...value, [target.name]: newchildBirthYear });
+    const { others } = value; //const others = value.others;
+    const regex = /^[a-zA-Z]*$/;
+    if (target.value === '' || regex.test(target.value)) {
+      const newOthers = [...others];
+      newOthers[index] = target.value;
+      setValue({ ...value, [target.name]: newOthers });
     }
   }
-  //onClick to add childBirth input
-  const addChildBirthInput = () => {
-    const { childBirthYear } = value;
-    if (childBirthYear.length < 8) {
-      setValue({ ...value, childBirthYear: [...childBirthYear, ''] });
+
+  //onClick to add other input
+  const addOthersInput = () => {
+    const { others } = value;
+    if (others.length < 9) {
+      setValue({ ...value, others: [...others, ''] });
     }
   };
 
   //onClick event to show ChildBirth component
-  const [isChildBirthShow, setIsChildBirthShow] = useState(false);
-  let childBirthStyles;
-  const showChildBirthInput = ({ target }) => {
-    if (target.value === 'My Children')
-      setIsChildBirthShow(!isChildBirthShow);
-    isChildBirthShow ? childBirthStyles = { display: 'block' } : childBirthStyles = { display: 'none' };
+  const [isOthersInputShow, setIsOthersInputShow] = useState(false);
+  let othersInputStyles;
+  const showOthersInput = ({ target }) => {
+    if (target.value === 'Others')
+      setIsOthersInputShow(!isOthersInputShow);
+    isOthersInputShow ? othersInputStyles = { display: 'block' } : othersInputStyles = { display: 'none' };
   };
 
   //onClick event to show BabyDue component
@@ -269,20 +222,15 @@ const App = () => {
             change={handleSingleChange}
             required={required.identify}
           />
-          <Grommet theme={SmallMultiButtontheme}>
-            <MultipleSelect
-              heading='Who do you normally shop for?*'
-              anchor={<Anchor href='#' icon={iconQuestion} />}
-              options={['Myself', 'My Children', 'My Family', 'My Partner', 'My Pet']}
-              click={showChildBirthInput}
-              name='shopFor'
-              value={value.shopFor}
-              change={handleMultiChange}
-              required={required.shopFor}
-            />
-          </Grommet>
-          <Grommet />
-          {isChildBirthShow && <ChildBirth display={childBirthStyles} change={handleChildBirthChange} click={addChildBirthInput} value={value.childBirthYear} />}
+          <MultipleSelect
+            heading='Who do you normally shop for?*'
+            anchor={<Anchor href='#' icon={iconQuestion} />}
+            options={['Myself', 'My Children', 'My Family', 'My Partner', 'My Pet']}
+            name='shopFor'
+            value={value.shopFor}
+            change={handleMultiChange}
+            required={required.shopFor}
+          />
           {/* if it has general width(=590px), somthing clickable appear */}
           <Box width='294px'>
             <SingleSelect
@@ -300,19 +248,21 @@ const App = () => {
           <MultipleSelect
             heading='What is important in choosing clothes? *'
             options={['Color', 'Pattern', 'Price', 'Brand', 'Material', 'Shape', 'Trend', 'Comfort', 'Texture', 'Easy to clean', 'Combination with my clothes', 'Others']}
-            name='qualities'
-            value={value.qualities}
+            name='importance'
+            value={value.importance}
             change={handleMultiChange}
-            required={required.qualities}
+            required={required.importance}
+            click={showOthersInput}
           />
+          {isOthersInputShow && <ExtraInput display={othersInputStyles} change={handleChildBirthChange} click={addOthersInput} value={value.others} />}
           <MultipleSelect
             heading='What is info source of your fashion? *'
             anchor={<Anchor href='#' icon={iconQuestion} />}
             options={['Instagram', 'Twitter', 'Website', 'Youtube', 'Shop', 'Magazine', 'TV Program', 'Friends', 'Family']}
-            name='exceptItems'
-            value={value.exceptItems}
+            name='source'
+            value={value.source}
             change={handleMultiChange}
-            required={required.exceptItems}
+            required={required.source}
           />
           <ShoppingPlace
             name='stores'

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const SubmitButton = styled.button.attrs(props => ({
   background: props.color || '#B783FC'
 }))
@@ -11,7 +10,6 @@ const SubmitButton = styled.button.attrs(props => ({
   height: 56px;
   margin: 0 auto;
   background: ${props => props.background};
-  box-shadow: 0px 4px 16px rgba(209, 35, 157, 0.15);
   border-radius: 4px;
   font-weight: bold;
   font-size: 16px;

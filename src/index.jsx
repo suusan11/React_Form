@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Grommet, Heading, Paragraph, Box, Text, Form, Image } from 'grommet';
 import iconCheck from './assets/tick.png';
+import bgShape from './assets/bg-rec.png';
 
 //components
 import SendButton from './SendButton';
@@ -178,6 +179,9 @@ const App = () => {
         >
           What you will get?
         </Heading>
+        <Box style={{ position: 'relative' }}>
+          <Image src={bgShape} style={{ position: 'absolute', left: '-10%', top: '-50px' }} />
+        </Box>
         <Box pad={{ left: '25%' }}>
           <Paragraph size='small' margin={{ top: '8px', }}>
             <Image fit='contain' src={iconCheck} margin={{ right: '10px' }} style={{ verticalAlign: 'middle' }} />

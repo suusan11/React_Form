@@ -71,7 +71,7 @@ const ExtraInput = props => {
             bottom: '15px'
           }}
         >
-          Tell us your importance! (optional)
+          Tell us your importance. (optional)
       </Text>
         <Box direction='row' justify='start' wrap={true}>
           {

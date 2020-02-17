@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Anchor, TextInput, FormField, Box, Grommet, Text } from 'grommet';
+import { Heading, TextInput, FormField, Box, Grommet, Text } from 'grommet';
 
 const BirthdayInputTheme = {
   global: {
@@ -74,13 +74,13 @@ const Birthday = props => {
       <Grommet theme={BirthdayInputTheme}>
         <Box direction='row' justify='start'>
           <FormField label='Month' name='month' htmlFor='text-input'>
-            <TextInput value={props.month} onChange={props.change} name='month' maxLength='2' required={props.requiredMonth} style={props.requiredMonth === false ? errorBox : shortInputBox} />
+            <TextInput value={props.month} onChange={props.change} name='month' maxLength='2' placeholder='03' required={props.requiredMonth} style={props.requiredMonth === false ? errorBox : shortInputBox} />
           </FormField>
           <FormField label='Day' name='day' htmlFor='text-input'>
-            <TextInput value={props.day} onChange={props.change} name='day' maxLength='2' required={props.requiredDay} style={props.requiredDay === false ? errorBox : shortInputBox} />
+            <TextInput value={props.day} onChange={props.change} name='day' maxLength='2' placeholder='07' required={props.requiredDay} style={props.requiredDay === false ? errorBox : shortInputBox} />
           </FormField>
           <FormField label='Year' name='year' htmlFor='text-input'>
-            <TextInput value={props.year} onChange={props.change} name='year' maxLength='4' required={props.requiredYear} style={props.requiredYear === false ? errorBox : longInputBox} />
+            <TextInput value={props.year} onChange={props.change} name='year' maxLength='4' placeholder='1991' required={props.requiredYear} style={props.requiredYear === false ? errorBox : longInputBox} />
           </FormField>
         </Box>
       </Grommet>

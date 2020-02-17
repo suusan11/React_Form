@@ -50,10 +50,10 @@ const BabyDue = props => {
         <Grommet theme={TextInputTheme}>
           <Box direction='row' justify='start'>
             <FormField label='Month' name='expectMonth' htmlFor='text-input'>
-              <TextInput value={props.month} onChange={props.change} name='expectMonth' maxLength='2' style={{ width: '61px' }} />
+              <TextInput value={props.month} onChange={props.change} name='expectMonth' maxLength='2' placeholder='05' style={{ width: '61px' }} />
             </FormField>
             <FormField label='Year' name='expectYear' htmlFor='text-input'>
-              <TextInput value={props.year} onChange={props.change} name='expectYear' maxLength='4' style={{ width: '77px' }} />
+              <TextInput value={props.year} onChange={props.change} name='expectYear' maxLength='4' placeholder='2020' style={{ width: '77px' }} />
             </FormField>
           </Box>
         </Grommet>

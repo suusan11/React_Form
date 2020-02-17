@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Grommet, Heading, Paragraph, Anchor, Box, Text, Form, Image } from 'grommet';
+import { Grommet, Heading, Paragraph, Box, Text, Form, Image } from 'grommet';
 import iconCheck from './assets/tick.png';
 
 //components
@@ -87,10 +87,10 @@ const App = () => {
   //onChange birthday input to check number
   const handleBirthdayChange = ({ target }) => {
     if (target.name === 'month' || target.name === 'expectMonth') {
-      if (target.value === '' || (target.value >= 1 && target.value <= 12))
+      if (target.value === '' || (target.value >= 0 && target.value <= 12))
         setValue({ ...value, [target.name]: target.value })
     } else if (target.name === 'day') {
-      if (target.value === '' || (target.value >= 1 && target.value <= 31))
+      if (target.value === '' || (target.value >= 0 && target.value <= 31))
         setValue({ ...value, [target.name]: target.value })
     } else {
       if (target.value === '' || (target.value[0] >= 1 && target.value[0] <= 2))

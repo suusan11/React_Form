@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heading, Text, CheckBox, Box, Image, Anchor, Grommet } from 'grommet';
+import { Heading, Text, CheckBox, Box, Image, Grommet } from 'grommet';
 import iconChecked from './assets/checked.png';
 import SearchInput from './SearchInput';
 

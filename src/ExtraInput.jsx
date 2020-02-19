@@ -80,7 +80,7 @@ const ExtraInput = props => {
               return (
                 <Box key={`others${i} `} margin={{ right: '8px' }}>
                   <FormField name={othersId} htmlFor={othersId} >
-                    <TextInput value={props.value[i]} onChange={props.change(i)} name='others' maxLength='4' />
+                    <TextInput value={props.value[i]} onChange={props.change(i)} name='others' />
                   </FormField>
                 </Box>
               );
